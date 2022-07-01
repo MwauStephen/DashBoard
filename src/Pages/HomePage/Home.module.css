@@ -1,0 +1,9 @@
+.home {
+  /* background-color: orangered; */
+  display: flex;
+}
+
+.home-container {
+  background-color: green;
+  flex: 6;
+}
