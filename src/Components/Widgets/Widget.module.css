@@ -1,0 +1,58 @@
+.widget {
+  display: flex;
+  flex: 1;
+  padding: 1rem;
+  justify-content: space-between;
+  /* background-color: green; */
+  box-shadow: 0.2rem 0.4rem 1rem 0.1rem rgba(0, 0, 0, 0.4);
+  border-radius: 1rem;
+  height: 10rem;
+  transition: all 0.2s;
+  overflow: hidden;
+}
+.widget:hover {
+  transform: scale(1.1);
+}
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.title {
+  font-size: 1.6rem;
+  font-family: inherit;
+  font-weight: 600;
+  color: #ff4500;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+.counter {
+  font-size: 2rem;
+  font-weight: 900;
+}
+.link {
+  font-size: 1.2rem;
+  border-bottom: 1px solid #ff4500;
+  max-width: max-content;
+}
+.percentage {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+}
+.positive {
+  color: green;
+}
+.negtive {
+  color: red;
+}
+
+.icon {
+  background-color: #ff4500;
+  padding: 0.5rem;
+  font-size: 2.4rem !important;
+  align-self: flex-end;
+
+  border-radius: 0.5rem;
+}
