@@ -1,4 +1,44 @@
 .navBar {
+  font-size: 1.6rem;
+  height: 6rem;
+  background-color: #fff;
+  border-bottom: 0.2rem solid #fff;
+  display: flex;
+  align-items: center;
 }
 .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  width: 100%;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  border: 0.1rem solid #cccc;
+  padding: 0.3rem;
+  gap: 1rem;
+}
+.search input {
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+}
+.item {
+  display: flex;
+  align-items: center;
+}
+.item:not(:last-child) {
+  margin-right: 2rem;
+}
+.icon {
+  font-size: 1.6rem !important;
 }
