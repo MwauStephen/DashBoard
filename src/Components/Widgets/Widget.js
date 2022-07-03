@@ -25,7 +25,12 @@ const Widget = (props) => {
         title: "orders",
         hasMoney: false,
         link: "view orders",
-        icon: <ShoppingCartOutlinedIcon className={styles.icon} />,
+        icon: (
+          <ShoppingCartOutlinedIcon
+            className={styles.icon}
+            style={{ backgroundColor: "#f4985a" }}
+          />
+        ),
       };
       break;
     case "earnings":
@@ -33,7 +38,12 @@ const Widget = (props) => {
         title: "earnings",
         hasMoney: true,
         link: "view  earnings",
-        icon: <MonetizationOnOutlinedIcon className={styles.icon} />,
+        icon: (
+          <MonetizationOnOutlinedIcon
+            className={styles.icon}
+            style={{ backgroundColor: "#65dd91" }}
+          />
+        ),
       };
       break;
     case "balance":
@@ -41,7 +51,12 @@ const Widget = (props) => {
         title: "balance",
         hasMoney: true,
         link: "view balance",
-        icon: <AccountBalanceOutlinedIcon className={styles.icon} />,
+        icon: (
+          <AccountBalanceOutlinedIcon
+            className={styles.icon}
+            style={{ backgroundColor: "#f2e713" }}
+          />
+        ),
       };
       break;
 
