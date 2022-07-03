@@ -22,6 +22,9 @@ const Home = () => {
           <Featured />
           <Chart />
         </div>
+        <div className={styles["list-container"]}>
+          <div className={styles["list-title"]}>Latest transaction</div>
+        </div>
       </div>
     </div>
   );
