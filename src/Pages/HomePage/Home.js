@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "../../Components/navBar/NavBar";
 import SideBar from "../../Components/sideBar/SideBar";
-import Widgets from "../../Components/Widgets/Widgets";
+import Widget from "../../Components/Widgets/Widget";
 import styles from "./Home.module.css";
 
 const Home = () => {
@@ -11,10 +11,10 @@ const Home = () => {
       <div className={styles["home-container"]}>
         <NavBar />
         <div className={styles.widgets}>
-        <Widgets/>
-        <Widgets/>
-        <Widgets/>
-        <Widgets/>
+          <Widget type="users" />
+          <Widget type="orders" />
+          <Widget type="earnings" />
+          <Widget type="balance" />
         </div>
       </div>
     </div>
