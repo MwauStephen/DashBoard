@@ -61,7 +61,7 @@ const rows = [
   },
   {
     id: 234572,
-    img: "https://unsplash.com/photos/NVD_32BBZF.jpg",
+    img: "https://www.pexels.com/photo/black-dualshock-4-2885014/",
     product: "playstation 4",
     customer: "John doe",
     date: "1 March ",
