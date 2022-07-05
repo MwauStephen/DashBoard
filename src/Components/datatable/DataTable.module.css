@@ -1,2 +1,20 @@
 .data {
+  padding: 2rem;
+}
+.action {
+  display: flex;
+  gap: 2rem;
+}
+.action button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.view {
+  border: 1px solid #00ff0d;
+  background: #00ff0d;
+}
+.delete {
+  border: 1px solid #dc143c;
+  color: #dc143c;
 }
