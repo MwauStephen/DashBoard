@@ -1,4 +1,5 @@
 import React from "react";
+import DataTable from "../../Components/datatable/DataTable";
 import NavBar from "../../Components/navBar/NavBar";
 import SideBar from "../../Components/sideBar/SideBar";
 import styles from "./List.module.css";
@@ -9,7 +10,7 @@ const List = () => {
       <SideBar />
       <div className={styles["list-container"]}>
         <NavBar />
-        dataTable
+        <DataTable />
       </div>
     </div>
   );
