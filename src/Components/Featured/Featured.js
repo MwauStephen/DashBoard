@@ -48,6 +48,7 @@ const Featured = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 
