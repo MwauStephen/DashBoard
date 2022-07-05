@@ -1,0 +1,16 @@
+.status {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.status.active {
+  background: rgba(0, 0, 0, 0.05);
+  color: green;
+}
+.status.pending {
+  background: #000;
+  color: yellow;
+}
+.status.passive {
+  background: #000;
+  color: crimson;
+}
