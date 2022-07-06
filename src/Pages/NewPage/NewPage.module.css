@@ -6,3 +6,72 @@
 .new-page {
   flex: 6;
 }
+.new-top,
+.new-bottom {
+  padding: 2rem;
+  margin: 2rem;
+  box-shadow: 0.2rem 0.4rem 1rem 0.1rem rgba(0, 0, 0, 0.4);
+  display: flex;
+}
+.new-title {
+  font-size: 2rem;
+  color: #ccc;
+}
+.left {
+  flex: 1;
+  text-align: center;
+}
+.right {
+  flex: 2;
+}
+
+.new-image {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 3rem;
+}
+.form-input {
+  width: 40%;
+}
+input {
+  width: 100%;
+  border: none;
+
+  border-bottom: 1px solid #ff4500;
+  padding: 1rem;
+}
+input:focus {
+  border: none !important;
+  /* outline: none; */
+}
+label {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+.icon {
+  font-size: 4rem !important;
+  cursor: pointer;
+}
+button {
+  width: 15rem;
+  padding: 1rem;
+  background-color: #ff4500;
+  border: none;
+  border-radius: 0.9rem;
+  color: #fff;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+button:hover {
+  background-color: #661c00;
+}
