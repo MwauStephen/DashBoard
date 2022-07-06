@@ -6,3 +6,72 @@
 .single-container {
   flex: 6;
 }
+.single-top {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+}
+.left {
+  flex: 1;
+  padding: 2rem;
+  box-shadow: 0.2rem 0.4rem 1rem 0.1rem rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+.edit-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 0.8rem;
+  background-color: #ff4500;
+  color: #fff;
+  font-weight: 600;
+
+  cursor: pointer;
+  border: none;
+}
+.right {
+  flex: 2;
+}
+.info-title {
+  font-size: 1.6rem;
+  color: #ccc;
+}
+.right {
+}
+.item {
+  display: flex;
+  gap: 2rem;
+}
+.item img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.details {
+}
+.detail-title {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  color: #ccc;
+}
+.detail-info:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.info-key {
+  color: #000;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+.info-value {
+  font-size: 1.2rem;
+}
+.single-bottom {
+  padding: 2rem;
+  margin: 1rem 2rem;
+  box-shadow: 0.2rem 0.4rem 1rem 0.1rem rgba(0, 0, 0, 0.4);
+}

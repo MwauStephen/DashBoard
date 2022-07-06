@@ -35,14 +35,14 @@ const data = [
     Total: 4200,
   },
 ];
-const Chart = () => {
+const Chart = (props) => {
   return (
     <div className={styles.chart}>
-      <div className={styles["chart-title"]}>Last 6 months revenue</div>
-      <ResponsiveContainer width="100%" aspect={2 / 1}>
+      <div className={styles["chart-title"]}>{props.title}</div>
+      <ResponsiveContainer width="100%" aspect={props.aspect}>
         <AreaChart
           width={730}
-          height={250}
+          height={200}
           data={data}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
@@ -53,7 +53,6 @@ const Chart = () => {
             </linearGradient>
           </defs>
           <XAxis dataKey="name" />
-
           <CartesianGrid strokeDasharray="3 3" className={styles.grid} />
           <Tooltip />
           <Area
