@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
 import { userRows, userColumns } from "../../sourceData";
@@ -13,7 +14,9 @@ const actionButtons = [
     renderCell: () => {
       return (
         <div className={styles.action}>
-          <button className={styles.view}>View</button>
+          <Link to="/list/list-test">
+            <button className={styles.view}>View</button>
+          </Link>
           <button className={styles.delete}>Delete</button>
         </div>
       );
