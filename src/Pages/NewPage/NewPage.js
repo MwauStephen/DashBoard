@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../../Components/navBar/NavBar";
 import SideBar from "../../Components/sideBar/SideBar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import styles from "./NewPage.module.css";
 
 const NewPage = (props) => {
+  const [file, setFile] = useState("");
+
+  console.log(file);
+  const fileChangeHandler = (event) => {
+    console.log(event);
+    setFile(event.target.files[0]);
+  };
+
   return (
     <div className={styles.new}>
       <SideBar />
@@ -16,7 +24,11 @@ const NewPage = (props) => {
         <div className={styles["new-bottom"]}>
           <div className={styles["left"]}>
             <img
-              src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?cs=srgb&dl=pexels-justin-shaifer-1222271.jpg&fm=jpg"
+              src={
+                file
+                  ? URL.createObjectURL(file)
+                  : "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?cs=srgb&dl=pexels-justin-shaifer-1222271.jpg&fm=jpg"
+              }
               alt="a person"
               className={styles["new-image"]}
             />
@@ -28,7 +40,12 @@ const NewPage = (props) => {
                   Image:
                   <DriveFolderUploadOutlinedIcon className={styles.icon} />
                 </label>
-                <input type="file" style={{ display: "none" }} id="file" />
+                <input
+                  type="file"
+                  style={{ display: "none" }}
+                  id="file"
+                  onChange={fileChangeHandler}
+                />
               </div>
               {props.inputs.map((input) => {
                 return (
