@@ -4,14 +4,14 @@ import SideBar from "../../Components/sideBar/SideBar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import styles from "./NewPage.module.css";
 
-const NewPage = () => {
+const NewPage = (props) => {
   return (
     <div className={styles.new}>
       <SideBar />
       <div className={styles["new-page"]}>
         <NavBar />
         <div className={styles["new-top"]}>
-          <h1 className={styles["new-title"]}>Add user</h1>
+          <h1 className={styles["new-title"]}>{props.title}</h1>
         </div>
         <div className={styles["new-bottom"]}>
           <div className={styles["left"]}>
@@ -30,11 +30,19 @@ const NewPage = () => {
                 </label>
                 <input type="file" style={{ display: "none" }} id="file" />
               </div>
-              <div className={styles["form-input"]}>
+              {props.inputs.map((input) => {
+                return (
+                  <div className={styles["form-input"]} key={input.id}>
+                    <label>{input.label}:</label>
+                    <input type={input.type} placeholder={input.placeholder} />
+                  </div>
+                );
+              })}
+              {/* <div className={styles["form-input"]}>
                 <label>UserName:</label>
                 <input type="text" placeholder="your name.." />
-              </div>
-              <div className={styles["form-input"]}>
+              </div> */}
+              {/* <div className={styles["form-input"]}>
                 <label>Name and SurName:</label>
                 <input type="text" placeholder="your name and surname.." />
               </div>
@@ -57,8 +65,10 @@ const NewPage = () => {
               <div className={styles["form-input"]}>
                 <label>Country:</label>
                 <input type="text" placeholder="your country." />
-              </div>
-              <button type="submit">send</button>
+              </div> */}
+              <button type="submit" className={styles.button}>
+                send
+              </button>
             </form>
           </div>
         </div>
