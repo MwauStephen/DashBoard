@@ -1,12 +1,15 @@
 import React from "react";
 import SideBarList from "./sideBarList";
+import { Link } from "react-router-dom";
 import styles from "./SideBar.module.css";
 
 const SideBar = () => {
   return (
     <div className={styles["side-bar"]}>
       <div className={styles["top-bar"]}>
-        <span className={styles.logo}>KyleDash</span>
+        <Link to="/">
+          <span className={styles.logo}>KyleDash</span>
+        </Link>
       </div>
       <hr />
       <div className={styles["center-bar"]}>
