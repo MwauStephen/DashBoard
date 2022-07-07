@@ -1,25 +1,25 @@
 export const UserInputs = [
   {
     id: 1,
-    label: "UserName:",
+    label: "UserName",
     type: "text",
     placeholder: "username..",
   },
   {
     id: 2,
-    label: "Name and SurName:",
+    label: "Name and SurName",
     type: "text",
     placeholder: "name and surname....",
   },
   {
     id: 3,
-    label: "Phone:",
+    label: "Phone",
     type: "number",
     placeholder: "071234567..",
   },
   {
     id: 4,
-    label: "mail:",
+    label: "mail",
     type: "text",
     placeholder: "mail@gmail.com..",
   },
