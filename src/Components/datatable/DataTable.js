@@ -28,6 +28,12 @@ const DataTable = () => {
   return (
     <div className={styles.data}>
       <Box sx={{ height: 400, width: "100%" }}>
+        <div className={styles["add-new"]}>
+          Add new user
+          <Link to="/list/new" className={styles["add"]}>
+            +
+          </Link>
+        </div>
         <DataGrid
           sx={{ fontSize: "1.6rem" }}
           rows={userRows}

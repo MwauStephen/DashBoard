@@ -18,3 +18,20 @@
   border: 1px solid #dc143c;
   color: #dc143c;
 }
+.add-new {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.add {
+  font-size: 1.6rem;
+  background-color: #00ff0d;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
