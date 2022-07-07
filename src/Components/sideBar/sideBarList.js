@@ -12,6 +12,7 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import PsychologyIcon from "@mui/icons-material/Psychology";
+import { Link } from "react-router-dom";
 const SideBarList = () => {
   return (
     <ul className={styles.list}>
@@ -21,14 +22,19 @@ const SideBarList = () => {
         <span>DashBoard</span>
       </li>
       <p className={styles.title}>list</p>
-      <li>
-        <GroupIcon className={styles.icon} />
-        <span>Users</span>
-      </li>
-      <li>
-        <ProductionQuantityLimitsIcon className={styles.icon} />
-        <span>Products</span>
-      </li>
+      <Link to="/list" style={{ textDecoration: "none" }}>
+        <li>
+          <GroupIcon className={styles.icon} />
+          <span>Users</span>
+        </li>
+      </Link>
+
+      <Link to="/products" style={{ textDecoration: "none" }}>
+        <li>
+          <ProductionQuantityLimitsIcon className={styles.icon} />
+          <span>Products</span>
+        </li>
+      </Link>
       <li>
         <BorderColorIcon className={styles.icon} />
         <span>Orders</span>
