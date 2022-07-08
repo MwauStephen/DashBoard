@@ -1,4 +1,5 @@
 .table {
+  /* background-color: #fff; */
 }
 .cell-wrapper {
   display: flex;
@@ -16,8 +17,10 @@
   border-radius: 0.5rem;
 }
 .approved {
-  color: #008000c7;
+  background-color: rgba(0, 128, 0, 0.384);
+  padding: 0.5rem;
 }
 .declined {
-  color: #daa520;
+  background-color: rgba(242, 180, 24, 0.226);
+  padding: 0.5rem;
 }
