@@ -27,7 +27,7 @@ const rows = [
     date: "1 March ",
     amount: 900,
     method: "Online payment",
-    status: "cash on delivery",
+    status: "approved",
   },
   {
     id: 234569,
@@ -47,7 +47,7 @@ const rows = [
     date: "1 March ",
     amount: 900,
     method: "Online payment",
-    status: "cash on delivery",
+    status: "approved",
   },
   {
     id: 234571,
@@ -73,10 +73,14 @@ const rows = [
 
 const TableData = () => {
   return (
-    <div className={styles.table}>
-      <TableContainer component={Paper}>
+    <div>
+      <TableContainer component={Paper} className={styles.table}>
         <Table
-          sx={{ minWidth: 650, fontSize: "1.6rem" }}
+          sx={{
+            minWidth: 650,
+            fontSize: "1.6rem",
+            backgroundColor: "#fff",
+          }}
           aria-label="simple table"
         >
           <TableHead>
@@ -109,9 +113,6 @@ const TableData = () => {
                   </div>
                 </TableCell>
 
-                {/* <TableCell className={styles["table-cell"]}>
-                {row.product}
-              </TableCell> */}
                 <TableCell className={styles["table-cell"]}>
                   {row.customer}
                 </TableCell>
@@ -126,7 +127,15 @@ const TableData = () => {
                 </TableCell>
 
                 <TableCell className={styles["table-cell"]}>
-                  <span className={styles.status}>{row.status}</span>
+                  <span
+                    className={
+                      row.status === "pending"
+                        ? styles["approved"]
+                        : styles["declined"]
+                    }
+                  >
+                    {row.status}
+                  </span>
                 </TableCell>
               </TableRow>
             ))}
