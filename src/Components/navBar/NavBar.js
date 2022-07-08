@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import DarkModeContext from "../Context/ModeContext";
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -11,6 +12,11 @@ import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import styles from "./NavBar.module.css";
 
 const NavBar = () => {
+  const { dispatch } = useContext(DarkModeContext);
+
+  const toggleModeHandler = () => {
+    dispatch({ type: "TOGGLE" });
+  };
   return (
     <div className={styles.navBar}>
       <div className={styles.wrapper}>
@@ -24,7 +30,10 @@ const NavBar = () => {
             English
           </div>
           <div className={styles.item}>
-            <DarkModeOutlinedIcon className={styles.icon} />
+            <DarkModeOutlinedIcon
+              className={styles.icon}
+              onClick={toggleModeHandler}
+            />
           </div>
           <div className={styles.item}>
             <FullscreenExitIcon className={styles.icon} />
