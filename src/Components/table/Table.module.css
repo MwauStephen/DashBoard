@@ -1,5 +1,6 @@
 .table {
-  /* background-color: #fff; */
+  background-color: "#ccc " !important;
+  color: #fff !important;
 }
 .cell-wrapper {
   display: flex;

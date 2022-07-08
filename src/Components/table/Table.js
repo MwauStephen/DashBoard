@@ -11,7 +11,8 @@ import styles from "./Table.module.css";
 const rows = [
   {
     id: 234567,
-    img: "https://unsplash.com/photos/NVD_32BBZFE",
+    img:
+      "https://images.pexels.com/photos/4355346/pexels-photo-4355346.jpeg?cs=srgb&dl=pexels-murat-esibatir-4355346.jpg&fm=jpg",
     product: "playstation 4",
     customer: "John doe",
     date: "1 March ",
@@ -21,7 +22,8 @@ const rows = [
   },
   {
     id: 234568,
-    img: "https://unsplash.com/photos/NVD_32BBZFE",
+    img:
+      "https://images.pexels.com/photos/3283568/pexels-photo-3283568.jpeg?cs=srgb&dl=pexels-roy-reyna-3283568.jpg&fm=jpg",
     product: "playstation 4",
     customer: "John doe",
     date: "1 March ",
@@ -31,7 +33,8 @@ const rows = [
   },
   {
     id: 234569,
-    img: "https://unsplash.com/photos/NVD_32BBZFE",
+    img:
+      "https://images.pexels.com/photos/4890733/pexels-photo-4890733.jpeg?cs=srgb&dl=pexels-teddy-tavan-4890733.jpg&fm=jpg",
     product: "playstation 4",
     customer: "John doe",
     date: "1 March ",
@@ -41,7 +44,8 @@ const rows = [
   },
   {
     id: 234570,
-    img: "https://unsplash.com/photos/NVD_32BBZFE",
+    img:
+      "https://images.pexels.com/photos/4556737/pexels-photo-4556737.jpeg?cs=srgb&dl=pexels-m-y-dogar-4556737.jpg&fm=jpg",
     product: "playstation 4",
     customer: "John doe",
     date: "1 March ",
@@ -51,7 +55,8 @@ const rows = [
   },
   {
     id: 234571,
-    img: "https://unsplash.com/photos/NVD_32BBZFE",
+    img:
+      "https://images.pexels.com/photos/2728264/pexels-photo-2728264.jpeg?cs=srgb&dl=pexels-azyan-syazwani-rozik-2728264.jpg&fm=jpg",
     product: "playstation 4",
     customer: "John doe",
     date: "1 March ",
@@ -61,7 +66,8 @@ const rows = [
   },
   {
     id: 234572,
-    img: "https://www.pexels.com/photo/black-dualshock-4-2885014/",
+    img:
+      "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?cs=srgb&dl=pexels-italo-melo-2379005.jpg&fm=jpg",
     product: "playstation 4",
     customer: "John doe",
     date: "1 March ",
@@ -79,7 +85,8 @@ const TableData = () => {
           sx={{
             minWidth: 650,
             fontSize: "1.6rem",
-            backgroundColor: "#fff",
+
+            // backgroundColor: "#ccc",
           }}
           aria-label="simple table"
         >
@@ -106,7 +113,7 @@ const TableData = () => {
                 <TableCell className={styles["table-cell"]}>
                   <div className={styles["cell-wrapper"]}>
                     <img
-                      src="/img/kerde-severin-NVD_32BBZFE-unsplash.jpg"
+                      src={row.img}
                       className={styles.image}
                       alt="playstation"
                     />
