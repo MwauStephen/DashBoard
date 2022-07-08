@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
@@ -6,25 +6,49 @@ import { userRows, userColumns } from "../../sourceData";
 
 import styles from "./DataTable.module.css";
 
-const actionButtons = [
-  {
-    field: "action",
-    headerName: "Action",
-    width: 200,
-    renderCell: () => {
-      return (
-        <div className={styles.action}>
-          <Link to="/list/list-test">
-            <button className={styles.view}>View</button>
-          </Link>
-          <button className={styles.delete}>Delete</button>
-        </div>
-      );
-    },
-  },
-];
-
 const DataTable = () => {
+  const [data, setData] = useState(userRows);
+
+  // const deleteItemRow = (id) => {
+  //   setData(
+  //     data.filter((item) => {
+  //       return item.id !== id;
+  //     })
+  //   );
+  // };
+
+  const handleDelete = (id) => {
+    setData(
+      data.filter((item) => {
+        return item.id !== id;
+      })
+    );
+  };
+
+  const actionButtons = [
+    {
+      field: "action",
+      headerName: "Action",
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <div className={styles.action}>
+            <Link to="/list/list-test">
+              <button className={styles.view}>View</button>
+            </Link>
+
+            <button
+              className={styles.delete}
+              onClick={() => handleDelete(params.row.id)}
+            >
+              Delete
+            </button>
+          </div>
+        );
+      },
+    },
+  ];
+
   return (
     <div className={styles.data}>
       <Box sx={{ height: 400, width: "100%" }}>
@@ -35,8 +59,9 @@ const DataTable = () => {
           </Link>
         </div>
         <DataGrid
+          className={styles["data-grid"]}
           sx={{ fontSize: "1.6rem" }}
-          rows={userRows}
+          rows={data}
           columns={userColumns.concat(actionButtons)}
           pageSize={9}
           rowsPerPageOptions={[9]}
