@@ -17,10 +17,12 @@ const SideBarList = () => {
   return (
     <ul className={styles.list}>
       <p className={styles.title}>main</p>
-      <li>
-        <DashboardIcon className={styles.icon} />
-        <span>DashBoard</span>
-      </li>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <li>
+          <DashboardIcon className={styles.icon} />
+          <span>DashBoard</span>
+        </li>
+      </Link>
       <p className={styles.title}>list</p>
       <Link to="/list" style={{ textDecoration: "none" }}>
         <li>

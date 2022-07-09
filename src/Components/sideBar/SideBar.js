@@ -17,7 +17,7 @@ const SideBar = () => {
   return (
     <div className={styles["side-bar"]}>
       <div className={styles["top-bar"]}>
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <span className={styles.logo}>KyleDash</span>
         </Link>
       </div>
