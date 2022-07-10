@@ -1,11 +1,9 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
+import { getAuth } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_KEY,
+  // apiKey: process.env.REACT_APP_KEY,
+  // apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  apiKey: " AIzaSyAP8gdlP-TAMZ2CWeYtiKlrI1bHBco6YHc",
   authDomain: "dashboard-84e5f.firebaseapp.com",
   projectId: "dashboard-84e5f",
   storageBucket: "dashboard-84e5f.appspot.com",
@@ -15,3 +13,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// console.log(app);
+
+export const auth = getAuth();
