@@ -1,33 +1,52 @@
 import React, { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+// import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 
 const Login = () => {
-  const [enteredName, setEnteredName] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
+  const [error, setError] = useState(false);
 
-  // if (enteredName.trim() === "" && enteredEmail.trim() === "") {
-  //   return;
-  // }
+  // const auth = getAuth();
+  const navigate = useNavigate();
 
   const formSubmitHandler = (event) => {
     // prevent default form behaviour
     event.preventDefault();
 
     // check for empty inputs
-    if (enteredName.trim() === "" && enteredEmail.trim() === "") {
+    if (enteredPassword.trim() === "" && enteredEmail.trim() === "") {
       return;
     }
 
-    console.log(enteredName, enteredEmail);
+    console.log(enteredPassword, enteredEmail);
 
     // clear form inputs on submission
-    setEnteredName("");
+    setEnteredPassword("");
     setEnteredEmail("");
+
+    //sign up
+    createUserWithEmailAndPassword(auth, enteredPassword, enteredEmail)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        navigate("/");
+        console.log(user);
+        // ...
+      })
+      .catch((error) => {
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // ..
+      });
   };
 
-  const nameInputHandler = (event) => {
+  const passwordInputHandler = (event) => {
     console.log(event.target.value);
-    setEnteredName(event.target.value);
+    setEnteredPassword(event.target.value);
   };
   const emailInputHandler = (event) => {
     console.log(event.target.value);
@@ -39,12 +58,12 @@ const Login = () => {
       <div className={styles["form"]}>
         <h2>Login Form</h2>
         <div className={styles["form-control"]}>
-          <label htmlFor="name">Your Name:</label>
+          <label htmlFor="password">Password:</label>
           <input
-            type="text"
-            id="name"
-            onChange={nameInputHandler}
-            value={enteredName}
+            type="password"
+            id="password"
+            onChange={passwordInputHandler}
+            value={enteredPassword}
           />
         </div>
         <div className={styles["form-control"]}>
@@ -59,6 +78,7 @@ const Login = () => {
         <div className={styles["form-actions"]}>
           <button type="submit">submit</button>
         </div>
+        {/* {error && <p>Please enter correct details</p>} */}
       </div>
     </form>
   );
