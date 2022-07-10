@@ -8,6 +8,7 @@ import SinglePage from "./Pages/SinglePage/SinglePage";
 import NewPage from "./Pages/NewPage/NewPage";
 import { ProductInputs, UserInputs } from "./Components/Form/FormSource";
 import DarkModeContext from "./Components/Context/ModeContext";
+import RequireAuth from "./Components/AuthRoute/RequireAuth";
 import "./App.css";
 function App() {
   // const { darkMode } = useContext(DarkModeContext);
@@ -18,24 +19,72 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
+            <Route
+              index
+              element={
+                <RequireAuth>
+                  <Home />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <RequireAuth>
+                  <Login />
+                </RequireAuth>
+              }
+            />
 
             <Route path="list">
-              <Route index element={<List />} />
-              <Route path=":ListUsers" element={<SinglePage />} />
               <Route
-                path="new"
-                element={<NewPage inputs={UserInputs} title="Add new user" />}
+                index
+                element={
+                  <RequireAuth>
+                    <List />
+                  </RequireAuth>
+                }
               />
-            </Route>
-            <Route path="products">
-              <Route index element={<List />} />
-              <Route path=":productId" element={<SinglePage />} />
+              <Route
+                path=":ListUsers"
+                element={
+                  <RequireAuth>
+                    <SinglePage />
+                  </RequireAuth>
+                }
+              />
               <Route
                 path="new"
                 element={
-                  <NewPage inputs={ProductInputs} title="Add new product" />
+                  <RequireAuth>
+                    <NewPage inputs={UserInputs} title="Add new user" />
+                  </RequireAuth>
+                }
+              />
+            </Route>
+            <Route path="products">
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <List />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path=":productId"
+                element={
+                  <RequireAuth>
+                    <SinglePage />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <RequireAuth>
+                    <NewPage inputs={ProductInputs} title="Add new product" />{" "}
+                  </RequireAuth>
                 }
               />
             </Route>
