@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-// import { signInWithEmailAndPassword } from "firebase/auth";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
@@ -24,24 +24,22 @@ const Login = () => {
 
     console.log(enteredPassword, enteredEmail);
 
-    // clear form inputs on submission
-    setEnteredPassword("");
-    setEnteredEmail("");
-
-    //sign up
-    createUserWithEmailAndPassword(auth, enteredPassword, enteredEmail)
+    signInWithEmailAndPassword(auth, enteredEmail, enteredPassword)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigate("/");
         console.log(user);
+        navigate("/");
         // ...
       })
       .catch((error) => {
-        // const errorCode = error.code;
-        // const errorMessage = error.message;
+        setError(error);
         // ..
       });
+
+    // clear form inputs on submission
+    setEnteredPassword("");
+    setEnteredEmail("");
   };
 
   const passwordInputHandler = (event) => {
@@ -78,7 +76,7 @@ const Login = () => {
         <div className={styles["form-actions"]}>
           <button type="submit">submit</button>
         </div>
-        {/* {error && <p>Please enter correct details</p>} */}
+        {error && <p>Please enter correct details</p>}
       </div>
     </form>
   );
