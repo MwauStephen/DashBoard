@@ -27,14 +27,7 @@ function App() {
                 </RequireAuth>
               }
             />
-            <Route
-              path="login"
-              element={
-                <RequireAuth>
-                  <Login />
-                </RequireAuth>
-              }
-            />
+            <Route path="login" element={<Login />} />
 
             <Route path="list">
               <Route
@@ -83,7 +76,7 @@ function App() {
                 path="new"
                 element={
                   <RequireAuth>
-                    <NewPage inputs={ProductInputs} title="Add new product" />{" "}
+                    <NewPage inputs={ProductInputs} title="Add new product" />
                   </RequireAuth>
                 }
               />
