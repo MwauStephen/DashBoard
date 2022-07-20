@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 // import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
+import AuthContext from "../../Components/Context/AuthContext";
 
 const Login = () => {
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -12,6 +13,8 @@ const Login = () => {
 
   // const auth = getAuth();
   const navigate = useNavigate();
+
+  const { dispatchUser } = useContext(AuthContext);
 
   const formSubmitHandler = (event) => {
     // prevent default form behaviour
@@ -29,6 +32,7 @@ const Login = () => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
+        dispatchUser({ type: "LOGIN", payload: user });
         navigate("/");
         // ...
       })
