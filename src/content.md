@@ -8,6 +8,8 @@
 
 ## This method verifies a user if he or she has an existing account.
 
+## First you will use the `createUserWithEmailAndPassword() method:` if the user is creating an account for the first time and then use the `signInWithEmailAndPassword() method:` to like sign in
+
 ## `useNavigate Hook` returns a function that lets you navigate programmatically, for example after a form is submitted.It is used to redirect users to a specific page through routing in react router-dom
 
 <!--
