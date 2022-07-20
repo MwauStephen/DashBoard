@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 
 //3.intial state
 const initialUserState = {
@@ -25,6 +25,8 @@ const AuthContext = React.createContext(initialUserState);
 //2. creating and exporting the context provider
 export const AuthContextProvider = (props) => {
   const [stateUser, dispatchUser] = useReducer(userReducerFn, initialUserState);
+
+  // prevent user from logou on refresh page
 
   return (
     <AuthContext.Provider
