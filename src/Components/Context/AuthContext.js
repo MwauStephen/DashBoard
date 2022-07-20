@@ -2,7 +2,8 @@ import React, { useReducer, useEffect } from "react";
 
 //3.intial state
 const initialUserState = {
-  currentUser: null,
+  // currentUser: JSON.parse(localStorage.getItem("user")) || null,
+  currentUser: JSON.parse(localStorage.getItem("user")) || null,
 };
 
 // 4.redcuer function
@@ -26,7 +27,10 @@ const AuthContext = React.createContext(initialUserState);
 export const AuthContextProvider = (props) => {
   const [stateUser, dispatchUser] = useReducer(userReducerFn, initialUserState);
 
-  // prevent user from logou on refresh page
+  // prevent user from logout on refresh page
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(stateUser.currentUser));
+  }, [stateUser.currentUser]);
 
   return (
     <AuthContext.Provider
