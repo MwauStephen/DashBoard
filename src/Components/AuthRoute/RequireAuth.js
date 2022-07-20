@@ -1,9 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Navigate } from "react-router-dom";
+import AuthContext from "../Context/AuthContext";
 
 const RequireAuth = (props) => {
   // protecting routes
-  const currentUser = false;
+  const { currentUser } = useContext(AuthContext);
+  // const currentUser = false;
+  // console.log(currentUser);
 
   return (
     <Fragment>
