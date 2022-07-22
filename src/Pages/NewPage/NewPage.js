@@ -2,15 +2,39 @@ import React, { useState } from "react";
 import NavBar from "../../Components/navBar/NavBar";
 import SideBar from "../../Components/sideBar/SideBar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import {
+  doc,
+  setDoc,
+  addDoc,
+  collection,
+  serverTimestamp,
+} from "firebase/firestore";
+import { db } from "../../firebase";
 import styles from "./NewPage.module.css";
 
 const NewPage = (props) => {
   const [file, setFile] = useState("");
 
   console.log(file);
+
+  // uploading file
   const fileChangeHandler = (event) => {
     console.log(event);
     setFile(event.target.files[0]);
+  };
+
+  // form submit handler
+  const formSubmitHandler = async (event) => {
+    event.preventDefault();
+    const response = await addDoc(collection(db, "cities"), {
+      name: "Los Angeles",
+      state: "CA",
+      country: "USA",
+      code: "00100",
+      Timestamp: serverTimestamp(),
+    });
+
+    console.log(response.id);
   };
 
   return (
@@ -34,7 +58,7 @@ const NewPage = (props) => {
             />
           </div>
           <div className={styles["right"]}>
-            <form>
+            <form onSubmit={formSubmitHandler}>
               <div className={styles["form-input"]}>
                 <label htmlFor="file">
                   Image:
@@ -55,11 +79,28 @@ const NewPage = (props) => {
                   </div>
                 );
               })}
-              {/* <div className={styles["form-input"]}>
+
+              <button type="submit" className={styles.button}>
+                send
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default NewPage;
+
+{
+  /* <div className={styles["form-input"]}>
                 <label>UserName:</label>
                 <input type="text" placeholder="your name.." />
-              </div> */}
-              {/* <div className={styles["form-input"]}>
+              </div> */
+}
+{
+  /* <div className={styles["form-input"]}>
                 <label>Name and SurName:</label>
                 <input type="text" placeholder="your name and surname.." />
               </div>
@@ -82,16 +123,5 @@ const NewPage = (props) => {
               <div className={styles["form-input"]}>
                 <label>Country:</label>
                 <input type="text" placeholder="your country." />
-              </div> */}
-              <button type="submit" className={styles.button}>
-                send
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default NewPage;
+              </div> */
+}
