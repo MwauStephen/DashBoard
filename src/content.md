@@ -92,3 +92,105 @@ return (
   export default App;
 
  -->
+
+`How to add new items to firestore`
+
+## For you to upload new files to firebase you need to create a new `firebasestore Database`.There is a settle difference between firebaseStore and real time database in firebase.
+
+## Firebase: `Realtime DB` vs `Cloud Firestore`
+
+## "In the Realtime database, data is stored as one `large JSON tree`.Realtime Database is Firebase's original database. It's an efficient, low-latency solution for mobile apps that require synced states across clients in realtime.
+
+## In Cloud Firestore, data is stored as a collection of documents.`Cloud Firestore`is Firebase's newest database for mobile app development. It builds on the successes of the Realtime Database with a new, more intuitive data model
+
+## Cloud Firestore also features richer, faster queries and scales further than the Realtime Database.
+
+`Adding files to firestore`
+
+## For simple operations such as adding files to firebase alll you have to do is search what you wanna do on the firebase docs eg.(`add new files/add data/add new document`)
+
+## Before adding any files to firebase you need to create a `database.`The db can be a firebasestore database or realtime database.You also need to initialize the db in ur firebase file.You also need to export the db to make it available to other components.
+
+## You also need to choose between prodcution type and test mode db,if you choose production type you need to override the rules by setting it to `true` to enable read and write operations by the user of your application.
+
+<!--
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+ -->
+
+## After creating the db and exporting it you need to import `set method` in the component you want to upload data from.To create or overwrite a single document, use the set() method.When you use `set()` to create a document, you must specify an ID for the document to create
+
+<!--
+import { doc, setDoc } from "firebase/firestore";
+ -->
+
+## If the document does not exist, it will be created.If the document does exist, its contents will be overwritten with the newly provided data.The following is the promise to be added on the handler.Since its a promise the event n hanlder must/should be ansynchronous.
+
+## Add the following promise on your form submithandler event or where you perform an event to upload the desired data.
+
+<!--
+import React from  "react"
+import { doc, setDoc } from "firebase/firestore";
+
+
+
+const Form ()=>{
+const formSubmitHandler=async (event)=>{
+event.preventDefault();
+
+// Add a new document in collection "cities"
+await setDoc(doc(db, "cities", "LA"), {
+  name: "Los Angeles",
+  state: "CA",
+  country: "USA"
+});
+}
+
+  <form onSubmit={formSubmitHandler}>{form contents}<form/>
+}
+
+ -->
+
+## `setDoc` method accepts the name of the database(`db`) and then sets the name(`cities`) with and id(`LA`) of the database.
+
+## But sometimes there isn't a meaningful ID for the document, and it's more convenient to let Cloud Firestore auto-generate an ID for you. You can do this by calling `add():`We also change `doc` to `collection` when we want firebase to generate an id automatically.
+
+## We have to import the`add`and `collection`methods from firestore.
+
+<!--
+
+import { collection, addDoc } from "firebase/firestore";
+
+// Add a new document with a generated id.
+const resposne = await addDoc(collection(db, "cities"), {
+  name: "Tokyo",
+  country: "Japan"
+});
+console.log("Document written with ID: ", response.id)
+ -->
+
+## We can also add a `timeStamp property`.A Timestamp represents a point in time independent of any time zone or calendar, represented as seconds and fractions of seconds at nanosecond resolution in UTC Epoch time.
+
+## The time stamp basicaaly adds the time and date when the data was created or when the data arrived on the firestore.
+
+<!--
+
+import { collection, addDoc ,sereverTimeStamp} from "firebase/firestore";
+
+// Add a new document with a generated id.
+const resposne = await addDoc(collection(db, "cities"), {
+  name: "Tokyo",
+  country: "Japan",
+  timeStamp:serverTimeStamp(),
+});
+console.log("Document written with ID: ", response.id)
+ -->
+
+## Since for this project we have also included `authentication with email and passowrd`,so we not only need to create users in firebase store database alone but also on the authentication side.
+
+## If we only create the users on the firebaseStore we wont be able to authenticate.So we need to create our users on the authentication side.
+
+<!--
+we create the user from the authentication side,if there is a successful user creation from the login process, we create the same users on the firebaseStore database.
+ -->
