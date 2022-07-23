@@ -3,7 +3,7 @@ import styles from "./sourceData.module.css";
 
 // column data
 export const userColumns = [
-  { field: "id", headerName: "ID", width: 90 },
+  { field: "id", headerName: "ID", width: 200 },
   {
     field: "user",
     headerName: "user",
@@ -13,8 +13,8 @@ export const userColumns = [
       return params.row.userName;
     },
   },
-  { field: "email", headerName: "Email", width: 230 },
-  { field: "age", headerName: "Age", width: 100 },
+  { field: "email", headerName: "Email", width: 300 },
+  { field: "phone", headerName: "Phone", width: 200 },
   {
     field: "Status",
     headerName: "Status",
@@ -35,63 +35,63 @@ export const userRows = [
     id: 1,
     userName: "Snow",
     email: "snow21@gmail.com",
-    age: 35,
+    phone: "071234567",
     status: "passive",
   },
   {
     id: 2,
     userName: "Lannister",
     email: "Lannister41@gmail.com",
-    age: 4,
+    phone: "071234567",
     status: "active",
   },
   {
     id: 3,
     userName: "John",
     email: "John48@gmail.com",
-    age: 25,
+    phone: "071234567",
     status: "pending",
   },
   {
     id: 4,
     userName: "Roxie",
     email: "Roxie56@gmail.com",
-    age: 18,
+    phone: "071234567",
     status: "active",
   },
   {
     id: 5,
     userName: "Frances",
     email: "Frances21@gmail.com",
-    age: 29,
+    phone: "071234567",
     status: "passive",
   },
   {
     id: 6,
     userName: "Clifford",
     email: "Clifford4@gmail.com",
-    age: 55,
+    phone: "071234567",
     status: "pending",
   },
   {
     id: 7,
     userName: "Melisandre",
     email: "Melisandre19@gmail.com",
-    age: 65,
+    phone: "071234567",
     status: "active",
   },
   {
     id: 8,
     userName: "Targaryen",
     email: "Targaryen12@gmail.com",
-    age: 24,
+    phone: "071234567",
     status: "passive",
   },
   {
     id: 9,
     userName: "Stark",
     email: "Stark45@gmail.com",
-    age: 48,
+    phone: "071234567",
     status: "pending",
   },
 ];
