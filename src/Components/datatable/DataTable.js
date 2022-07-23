@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
 import { db } from "../../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { userRows, userColumns } from "../../sourceData";
 
 import styles from "./DataTable.module.css";
+import { async } from "@firebase/util";
 
 const DataTable = () => {
   const [data, setData] = useState([]);
@@ -28,12 +29,17 @@ const DataTable = () => {
   }, []);
   // console.log(data);
 
-  const handleDelete = (id) => {
-    setData(
-      data.filter((item) => {
-        return item.id !== id;
-      })
-    );
+  const handleDelete = async (id) => {
+    try {
+      await deleteDoc(doc(db, "users", id));
+      setData(
+        data.filter((item) => {
+          return item.id !== id;
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const actionButtons = [
