@@ -9,7 +9,8 @@ import {
   collection,
   serverTimestamp,
 } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import styles from "./NewPage.module.css";
 
 const NewPage = (props) => {
@@ -29,7 +30,6 @@ const NewPage = (props) => {
     const value = event.target.value;
     console.log(value);
 
-    // setData({ ...data, [id]: value });
     // updating state that depends on previous state
     setData((prevData) => {
       return { ...prevData, [id]: value };
@@ -41,15 +41,29 @@ const NewPage = (props) => {
   // form submit handler
   const formSubmitHandler = async (event) => {
     event.preventDefault();
-    const response = await addDoc(collection(db, "cities"), {
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA",
-      code: "00100",
-      Timestamp: serverTimestamp(),
+
+    // 1.creating user after authentication.
+    const response = await createUserWithEmailAndPassword(
+      auth,
+      data.email,
+      data.password
+    );
+
+    // 2.Add the data to the db
+    await setDoc(doc(db, "users", response.user.uid), {
+      ...data,
+      timeStamp: serverTimestamp(),
     });
 
-    console.log(response.id);
+    // const response = await addDoc(collection(db, "cities"), {
+    //   name: "Los Angeles",
+    //   state: "CA",
+    //   country: "USA",
+    //   code: "00100",
+    //   Timestamp: serverTimestamp(),
+    // });
+
+    // console.log(response.id);
   };
 
   return (
