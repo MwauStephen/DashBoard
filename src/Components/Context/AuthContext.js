@@ -4,6 +4,7 @@ import React, { useReducer, useEffect } from "react";
 const initialUserState = {
   // currentUser: JSON.parse(localStorage.getItem("user")) || null,
   currentUser: JSON.parse(localStorage.getItem("user")) || null,
+  // currentUser: "false",
 };
 
 // 4.redcuer function
@@ -16,7 +17,7 @@ const userReducerFn = (state, action) => {
     return { currentUser: null };
   }
   return {
-    currentUser: state,
+    currentUser: state.currentUser,
   };
 };
 
@@ -42,33 +43,3 @@ export const AuthContextProvider = (props) => {
 };
 
 export default AuthContext;
-
-// import React, { useReducer } from "react";
-
-// const INITIAL_STATE = {
-//   currentUser: null,
-// };
-
-// const userReducerFn = (state, action) => {
-//   if (action.type === "LOGIN") {
-//     return { currentUser: action.payload };
-//   } else {
-//     return { currentUser: null };
-//   }
-
-//   return state;
-// };
-
-// const AuthContext = React.createContext({ INITIAL_STATE });
-
-// export const AuthContextProvider = () => {
-//   const [user, dispatchUser] = useReducer(userReducerFn, INITIAL_STATE);
-
-//   return (
-//     <AuthContext.Provider
-//       value={{ currentUser: user.currentUser, dispatchUser }}
-//     ></AuthContext.Provider>
-//   );
-// };
-
-// export default AuthContext;

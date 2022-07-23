@@ -74,6 +74,10 @@ label {
   text-transform: uppercase;
   margin-top: 1rem;
 }
+.button:disabled {
+  background-color: rgba(255, 68, 0, 0.384);
+  cursor: not-allowed;
+}
 .button:hover {
   background-color: #661c00;
 }

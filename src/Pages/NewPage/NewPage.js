@@ -15,11 +15,13 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 import styles from "./NewPage.module.css";
+import { useNavigate } from "react-router-dom";
 
 const NewPage = (props) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [percentage, setPercentage] = useState(null);
+  const navigate = useNavigate();
 
   // upload an image to firebase storage
   useEffect(() => {
@@ -101,6 +103,9 @@ const NewPage = (props) => {
       ...data,
       timeStamp: serverTimestamp(),
     });
+
+    // navigates to the previous page.
+    navigate("/list");
 
     // const response = await addDoc(collection(db, "cities"), {
     //   name: "Los Angeles",

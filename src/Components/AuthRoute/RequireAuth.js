@@ -6,8 +6,8 @@ const RequireAuth = (props) => {
   // protecting routes
   // const { currentUser } = useContext(AuthContext);
   const ctx = useContext(AuthContext);
-  // const currentUser = false;
-  // console.log(currentUser);
+  // const currentUser = null;
+  // console.log(ctx.currentUser);
 
   return (
     <Fragment>
