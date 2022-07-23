@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../../Components/navBar/NavBar";
 import SideBar from "../../Components/sideBar/SideBar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
@@ -9,15 +9,28 @@ import {
   collection,
   serverTimestamp,
 } from "firebase/firestore";
-import { db, auth } from "../../firebase";
+import { db, auth, storage } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
 import styles from "./NewPage.module.css";
 
 const NewPage = (props) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
 
-  // uploading file
+  // upload an image to firebase storage
+  useEffect(() => {
+    const uploadFile = () => {
+      const name = new Date().getTime() + file.name;
+      console.log(name);
+      const storageRef = ref(storage, file.name);
+    };
+    file && uploadFile();
+  }, [file]);
+
+  // uploading file event handler
   const fileChangeHandler = (event) => {
     console.log(event);
     setFile(event.target.files[0]);
