@@ -19,6 +19,7 @@ import styles from "./NewPage.module.css";
 const NewPage = (props) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
+  const [percentage, setPercentage] = useState(null);
 
   // upload an image to firebase storage
   useEffect(() => {
@@ -35,6 +36,7 @@ const NewPage = (props) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log("Upload is " + progress + "% done");
+          setPercentage(progress);
           switch (snapshot.state) {
             case "paused":
               console.log("Upload is paused");
@@ -159,7 +161,11 @@ const NewPage = (props) => {
                 );
               })}
 
-              <button type="submit" className={styles.button}>
+              <button
+                type="submit"
+                className={styles.button}
+                disabled={percentage !== null && percentage < 100}
+              >
                 send
               </button>
             </form>
