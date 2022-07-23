@@ -14,14 +14,29 @@ import styles from "./NewPage.module.css";
 
 const NewPage = (props) => {
   const [file, setFile] = useState("");
-
-  console.log(file);
+  const [data, setData] = useState({});
 
   // uploading file
   const fileChangeHandler = (event) => {
     console.log(event);
     setFile(event.target.files[0]);
   };
+
+  const inputHandler = (event) => {
+    const id = event.target.id;
+    console.log(id);
+
+    const value = event.target.value;
+    console.log(value);
+
+    // setData({ ...data, [id]: value });
+    // updating state that depends on previous state
+    setData((prevData) => {
+      return { ...prevData, [id]: value };
+    });
+  };
+
+  console.log(data);
 
   // form submit handler
   const formSubmitHandler = async (event) => {
@@ -75,7 +90,12 @@ const NewPage = (props) => {
                 return (
                   <div className={styles["form-input"]} key={input.id}>
                     <label>{input.label}:</label>
-                    <input type={input.type} placeholder={input.placeholder} />
+                    <input
+                      id={input.id}
+                      type={input.type}
+                      placeholder={input.placeholder}
+                      onChange={inputHandler}
+                    />
                   </div>
                 );
               })}
